@@ -13,6 +13,26 @@ user_Can = 0	 #User input for number of cannibals for right to left travel
 k = 0
 print("\nM M M C C C | >>> --- | \n")       #Number of Players on Left side
 
+# To move left to right
+def Left_TO_Right():
+    while True:         #This loop is for Input. Infinite loop till proper input is received 
+        print("Left side -> right side river travel")
+        #User Input
+        user_Miss = int(input("Enter number of Missionaries travel => "))	
+        user_Can = int(input("Enter number of Cannibals travel => "))
+
+        if((user_Miss==0)and(user_Can==0)):
+            print("Travel not possible if boat is empty!")
+            print("Please Re-enter the values : ")
+        #User Input Total <= 2; missionary number should be >0 for tavel; Cannibal number should be >0 for travel
+        elif(((user_Miss+user_Can) <= 2)and((left_Miss-user_Miss)>=0)and((left_Can-user_Can)>=0)):
+            break           # Break second loop if user input is correct and check win loss conditions
+        else:
+            print("Wrong or Invalid input re-enter : ")
+
+
+
+# To move right to left
 def Right_To_Left():
     while True:
         print("Right side -> Left side river travel")
@@ -27,10 +47,11 @@ def Right_To_Left():
         else:
             print("Wrong input re-enter : ")
 
+# Game Starts
 try:
     while True:         # This loop is for checking condition of win & lose. Loop is infinite until lose or won
-        #Left_TO_Right()
-        while True:         #This loop is for Input. Infinite loop till proper input is received 
+        Left_TO_Right()
+        """while True:         #This loop is for Input. Infinite loop till proper input is received 
             print("Left side -> right side river travel")
             #User Input
             user_Miss = int(input("Enter number of Missionaries travel => "))	
@@ -43,7 +64,7 @@ try:
             elif(((user_Miss+user_Can) <= 2)and((left_Miss-user_Miss)>=0)and((left_Can-user_Can)>=0)):
                 break           # Break second loop if user input is correct and check win loss conditions
             else:
-                print("Wrong or Invalid input re-enter : ")
+                print("Wrong or Invalid input re-enter : ")"""
 
         left_Miss = (left_Miss - user_Miss) #Updating left side Missionary
         left_Can = (left_Can - user_Can)    #Updating left side Cannibals
