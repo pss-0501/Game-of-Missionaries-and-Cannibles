@@ -28,7 +28,42 @@ try:
             elif(((user_Miss+user_Can) <= 2)and((left_Miss-user_Miss)>=0)and((left_Can-user_Can)>=0)):
                 break           # Break second loop if user input is correct and check win loss conditions
             else:
-                print("Wrong input re-enter : ")
+                print("Wrong or Invalid input re-enter : ")
+
+        left_Miss = (left_Miss - user_Miss) #Updating left side Missionary
+        left_Can = (left_Can - user_Can)    #Updating left side Cannibals
+        right_Miss += user_Miss #Updating right side Missionary
+        right_Can += user_Can   #Updating right side Cannibals
+
+        print('\n')
+        for i in range(0,left_Miss):
+            print('M',end='')
+        for i in range(0,left_Can):
+            print('C',end='')
+        print("| --> | ",end="")
+        for i in range(0,right_Miss):
+            print('M',end='')
+        for i in range(0,right_Can):
+            print('C',end='')
+        print('\n')
+
+        k += 1
+
+        if(((left_Can==3)and (left_Miss == 1))or((left_Can==3)and(left_Miss==2))or((left_Can==2)and(left_Miss==1))or((right_Can==3)and (right_Miss == 1))or((right_Can==3)and(right_Miss==2))or((right_Can==2)and(right_Miss==1))):
+            print("Cannibals eat missionaries:\nYou lost the game")
+
+            break
+
+        if((right_Miss+right_Can) == 6):
+            print("You won the game : \n\tCongrats")
+            print("Total attempt")
+            print(k)
+            break
+
+        while True:
+            print("Right side -> Left side river travel")
+            user_Miss = int(input("Enter number of Missionaries travel => "))
+            user_Can = int(input("Enter number of Cannibals travel => "))
 
 except EOFError as e:
 	print("\nInvalid input please retry !!")
