@@ -13,8 +13,23 @@ user_Can = 0	 #User input for number of cannibals for right to left travel
 k = 0
 print("\nM M M C C C | >>> --- | \n")       #Number of Players on Left side
 
+def Right_To_Left():
+    while True:
+        print("Right side -> Left side river travel")
+        user_Miss = int(input("Enter number of Missionaries travel => "))
+        user_Can = int(input("Enter number of Cannibals travel => "))
+        
+        if((user_Miss==0)and(user_Can==0)):
+            print("Empty travel not possible")
+            print("Re-enter : ")
+        elif(((user_Miss+user_Can)<=2)and((right_Miss-user_Miss)>=0)and((right_Can-user_Can)>=0)):
+            break
+        else:
+            print("Wrong input re-enter : ")
+
 try:
     while True:         # This loop is for checking condition of win & lose. Loop is infinite until lose or won
+        #Left_TO_Right()
         while True:         #This loop is for Input. Infinite loop till proper input is received 
             print("Left side -> right side river travel")
             #User Input
@@ -60,7 +75,9 @@ try:
             print(k)
             break
 
-        while True:
+        Right_To_Left()
+
+        """while True:
             print("Right side -> Left side river travel")
             user_Miss = int(input("Enter number of Missionaries travel => "))
             user_Can = int(input("Enter number of Cannibals travel => "))
@@ -71,7 +88,7 @@ try:
             elif(((user_Miss+user_Can)<=2)and((right_Miss-user_Miss)>=0)and((right_Can-user_Can)>=0)):
                 break
             else:
-                print("Wrong input re-enter : ")
+                print("Wrong input re-enter : ")"""
 
         left_Miss += user_Miss
         left_Can += user_Can
