@@ -64,6 +64,38 @@ try:
             print("Right side -> Left side river travel")
             user_Miss = int(input("Enter number of Missionaries travel => "))
             user_Can = int(input("Enter number of Cannibals travel => "))
+        
+            if((user_Miss==0)and(user_Can==0)):
+                print("Empty travel not possible")
+                print("Re-enter : ")
+            elif(((user_Miss+user_Can)<=2)and((right_Miss-user_Miss)>=0)and((right_Can-user_Can)>=0)):
+                break
+            else:
+                print("Wrong input re-enter : ")
+
+        left_Miss += user_Miss
+        left_Can += user_Can
+        right_Miss -= user_Miss
+        right_Can -= user_Can
+
+        k += 1
+        print("\n")
+        for i in range(0,left_Miss):
+            print("M",end="")
+        for i in range(0,left_Can):
+            print('C',end='')
+        print("| <-- | ",end="")
+        for i in range(0,right_Miss):
+            print('M',end='')
+        for i in range(0,right_Can):
+            print('C',end='')
+        print("\n")
+
+        if(((left_Can==3)and (left_Miss == 1))or((left_Can==3)and(left_Miss==2))or((left_Can==2)and(left_Miss==1))or((right_Can==3)and (right_Miss == 1))or((right_Can==3)and(right_Miss==2))or((right_Can==2)and(right_Miss==1))):
+            print("Cannibals eat missionaries:\nYou lost the game")
+            break
 
 except EOFError as e:
 	print("\nInvalid input please retry !!")
+except ValueError as e:
+    print("\nValue Error has occurred!")
