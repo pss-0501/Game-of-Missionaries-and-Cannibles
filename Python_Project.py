@@ -52,10 +52,10 @@ def Right_To_Left():
             print("Wrong or Invalid input! Read the rules and please re-enter : ")
 
 
-"""def You_Lose():
+def You_Lose():
     if(((left_Can==3)and (left_Miss == 1))or((left_Can==3)and(left_Miss==2))or((left_Can==2)and(left_Miss==1))or((right_Can==3)and (right_Miss == 1))or((right_Can==3)and(right_Miss==2))or((right_Can==2)and(right_Miss==1))):
         print("Cannibals eat missionaries:\nYou lost the game")
-        return False"""
+        return False
 
 
 # Game Starts
@@ -100,12 +100,12 @@ try:
 
         k += 1
         
-        """if (You_Lose() == False):
-            break"""
-
-        if(((left_Can==3)and (left_Miss == 1))or((left_Can==3)and(left_Miss==2))or((left_Can==2)and(left_Miss==1))or((right_Can==3)and (right_Miss == 1))or((right_Can==3)and(right_Miss==2))or((right_Can==2)and(right_Miss==1))):
-            print("Cannibals eat missionaries:\nYou lost the game")
+        if (You_Lose() == False):
             break
+
+        """if(((left_Can==3)and (left_Miss == 1))or((left_Can==3)and(left_Miss==2))or((left_Can==2)and(left_Miss==1))or((right_Can==3)and (right_Miss == 1))or((right_Can==3)and(right_Miss==2))or((right_Can==2)and(right_Miss==1))):
+            print("Cannibals eat missionaries:\nYou lost the game")
+            break"""
 
         if((right_Miss+right_Can) == 6):
             print("You won the game : \n\tCongrats")
@@ -148,12 +148,12 @@ try:
             print('C ',end='')
         print("\n")
 
-        """if (You_Lose() == False):
-            break"""
-
-        if(((left_Can==3)and (left_Miss == 1))or((left_Can==3)and(left_Miss==2))or((left_Can==2)and(left_Miss==1))or((right_Can==3)and (right_Miss == 1))or((right_Can==3)and(right_Miss==2))or((right_Can==2)and(right_Miss==1))):
-            print("Cannibals eat missionaries:\nYou lost the game")
+        if (You_Lose() == False):
             break
+
+        """if(((left_Can==3)and (left_Miss == 1))or((left_Can==3)and(left_Miss==2))or((left_Can==2)and(left_Miss==1))or((right_Can==3)and (right_Miss == 1))or((right_Can==3)and(right_Miss==2))or((right_Can==2)and(right_Miss==1))):
+            print("Cannibals eat missionaries:\nYou lost the game")
+            break"""
 
 except EOFError as e:
 	print("\nInvalid input please retry !!")
