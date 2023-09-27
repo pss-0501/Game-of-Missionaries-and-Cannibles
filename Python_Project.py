@@ -51,12 +51,20 @@ def Right_To_Left():
         else:
             print("Wrong or Invalid input! Read the rules and please re-enter : ")
 
-
+# To check lose condition
 def You_Lose():
     if(((left_Can==3)and (left_Miss == 1))or((left_Can==3)and(left_Miss==2))or((left_Can==2)and(left_Miss==1))or((right_Can==3)and (right_Miss == 1))or((right_Can==3)and(right_Miss==2))or((right_Can==2)and(right_Miss==1))):
         print("Cannibals eat missionaries:\nYou lost the game")
         return False
 
+# To check win condition
+def You_Win():
+    if((right_Miss+right_Can) == 6):
+            print("You won the game : \n\tCongrats")
+            print("Total attempt")
+            print(k)
+            return True
+            #break
 
 # Game Starts
 try:
@@ -107,11 +115,14 @@ try:
             print("Cannibals eat missionaries:\nYou lost the game")
             break"""
 
-        if((right_Miss+right_Can) == 6):
+        if (You_Win() == True):
+            break
+
+        """if((right_Miss+right_Can) == 6):
             print("You won the game : \n\tCongrats")
             print("Total attempt")
             print(k)
-            break
+            break"""
 
         #Right_To_Left()
 
