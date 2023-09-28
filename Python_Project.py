@@ -11,10 +11,10 @@ right_Can = 0		 #Right side cannibals number
 user_Miss = 0	 #User input for number of missionaries for right to left side travel
 user_Can = 0	 #User input for number of cannibals for right to left travel
 k = 0
-print("\nM M M C C C | >>> --- | \n")       #Number of Players on Left side
+print("\nM M M C C C | >>> --- >>> | \n")       #Number of Players on Left side
 
 # To move left to right
-def Left_TO_Right():
+def Left_TO_Right(): 
     while True:         #This loop is for Input. Infinite loop till proper input is received 
         print("Left side -> right side river travel")
         #User Input
@@ -61,8 +61,8 @@ def You_Lose():
 def You_Win():
     if((right_Miss+right_Can) == 6):
             print("You won the game : \n\tCongrats")
-            print("Total attempt")
-            print(k)
+            print("Total attempts are: ", k)
+            #print(k)
             return True
             #break
 
@@ -139,6 +139,10 @@ try:
             else:
                 print("Wrong input re-enter : ")"""
 
+        """stop_game = input("Enter quit to stop the game or any letter to continue : ")
+        if(stop_game == 'quit'):
+            break"""
+
         user_Miss,user_Can = Right_To_Left()
 
         left_Miss += user_Miss
@@ -165,6 +169,10 @@ try:
         """if(((left_Can==3)and (left_Miss == 1))or((left_Can==3)and(left_Miss==2))or((left_Can==2)and(left_Miss==1))or((right_Can==3)and (right_Miss == 1))or((right_Can==3)and(right_Miss==2))or((right_Can==2)and(right_Miss==1))):
             print("Cannibals eat missionaries:\nYou lost the game")
             break"""
+
+        stop_game = input("Enter quit to stop the game or any letter to continue : ")
+        if(stop_game == 'quit'):
+            break
 
 except EOFError as e:
 	print("\nInvalid input please retry !!")
