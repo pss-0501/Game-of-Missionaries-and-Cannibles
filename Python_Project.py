@@ -5,15 +5,20 @@ def Left_TO_Right(left_Miss,left_Can):
     while True:         #This loop is for Input. Infinite loop till proper input is received 
         print("Left side -> right side river travel")
         #User Input
-        user_Miss = input("Press q to exit the game or Enter number of Missionaries travel (0,1,2) => ")	
+        user_Miss = input("Press q to exit the game or Enter number of Missionaries travel (0,1,2) => ")
+
+        if(user_Miss == 'q'):
+            print("Thanks for Playing! GoodBye!! ")
+            exit()
+
         user_Can = input("Press q to exit the game or Enter number of Cannibals travel (0,1,2) => ")
 
-        if(user_Miss == 'q' or user_Can == 'q'):
+        if(user_Can == 'q'):
             print("Thanks for Playing! GoodBye!! ")
             exit()
         
         user_Miss = int(user_Miss)
-        user_Can = int(user_Can)
+        user_Can = int(user_Can)    #Type Casting
         
         if((user_Miss==0)and(user_Can==0)):
             print("Travel not possible if boat is empty!")
@@ -30,15 +35,20 @@ def Left_TO_Right(left_Miss,left_Can):
 def Right_To_Left(right_Miss,right_Can):
     while True:
         print("Right side -> Left side river travel")
-        user_Miss = input("Press q to exit the game or Enter number of Missionaries travel (0,1,2) => ")
+        user_Miss = input("Enter number of Missionaries travel (0,1,2) => ")
+
+        if(user_Miss == 'q'):
+            print("Thanks for Playing! GoodBye!! ")
+            exit()
+
         user_Can = input("Press q to exit the game or Enter number of Cannibals travel (0,1,2) => ")
         
-        if(user_Miss == 'q' or user_Can == 'q'):
+        if(user_Can == 'q'):
             print("Thanks for Playing! GoodBye!! ")
             exit()
 
         user_Miss = int(user_Miss)
-        user_Can = int(user_Can)
+        user_Can = int(user_Can)    #Type Casting
 
         if((user_Miss==0)and(user_Can==0)):
             print("Travel not possible if boat is empty!")
@@ -49,24 +59,6 @@ def Right_To_Left(right_Miss,right_Can):
             #break  #continue with the program; end function
         else:
             print("Wrong or Invalid input! Read the rules and please re-enter : ")
-
-
-# To check lose condition
-"""def You_Lose():
-    #Cannibals more than missionaries then player loses the game
-    if(((left_Can==3)and (left_Miss == 1))or((left_Can==3)and(left_Miss==2))or((left_Can==2)and(left_Miss==1))or((right_Can==3)and (right_Miss == 1))or((right_Can==3)and(right_Miss==2))or((right_Can==2)and(right_Miss==1))):
-        print("Cannibals eat missionaries:\nYou lost the game")
-        return False"""
-
-# To check win condition
-"""def You_Win():
-    #All six crossed the river without losing then win
-    if((right_Miss+right_Can) == 6):
-        print("You won the game : \n\tCongrats")
-        print("Total attempts are: ", attempts)
-        #print(k)
-        return True
-        #break"""
 
 
 def Lets_Play():
@@ -90,21 +82,6 @@ def Lets_Play():
         while True:         # This loop is for checking condition of win & lose. Loop is infinite until lose or won
             
             #Left_TO_Right()
-
-            """while True:         #This loop is for Input. Infinite loop till proper input is received 
-                print("Left side -> right side river travel")
-                #User Input
-                user_Miss = int(input("Enter number of Missionaries travel => "))	
-                user_Can = int(input("Enter number of Cannibals travel => "))
-
-                if((user_Miss==0)and(user_Can==0)):
-                    print("Travel not possible if boat is empty!")
-                    print("Please Re-enter the values : ")
-                #User Input Total <= 2; missionary number should be >0 for tavel; Cannibal number should be >0 for travel
-                elif(((user_Miss+user_Can) <= 2)and((left_Miss-user_Miss)>=0)and((left_Can-user_Can)>=0)):
-                    break           # Break second loop if user input is correct and check win loss conditions
-                else:
-                    print("Wrong or Invalid input re-enter : ")"""
             #Function to move left to right
             user_Miss,user_Can = Left_TO_Right(left_Miss,left_Can)
 
@@ -126,18 +103,12 @@ def Lets_Play():
             print('\n')
 
             attempts += 1
-                
-            """if (You_Lose() == False):
-                break"""
 
             #To check losing condition as per rules
             if(((left_Can==3)and (left_Miss == 1))or((left_Can==3)and(left_Miss==2))or((left_Can==2)and(left_Miss==1))or((right_Can==3)and (right_Miss == 1))or((right_Can==3)and(right_Miss==2))or((right_Can==2)and(right_Miss==1))):
                 print("Cannibals eat missionaries:\nYou lost the game")
                 KeepPlaying()
                 break
-
-            """if (You_Win() == True):
-                break"""
 
             #To check winning condition
             if((right_Miss+right_Can) == 6):
@@ -147,24 +118,6 @@ def Lets_Play():
                 break
 
             #Right_To_Left()
-
-            """while True:
-                print("Right side -> Left side river travel")
-                user_Miss = int(input("Enter number of Missionaries travel => "))
-                user_Can = int(input("Enter number of Cannibals travel => "))
-                
-                if((user_Miss==0)and(user_Can==0)):
-                    print("Empty travel not possible")
-                    print("Re-enter : ")
-                elif(((user_Miss+user_Can)<=2)and((right_Miss-user_Miss)>=0)and((right_Can-user_Can)>=0)):
-                    break
-                else:
-                    print("Wrong input re-enter : ")"""
-
-            """stop_game = input("Enter quit to stop the game or any letter to continue : ")
-                if(stop_game == 'quit'):
-                break"""
-            
             #Function to move right to left
             user_Miss,user_Can = Right_To_Left(right_Miss,right_Can)
 
@@ -187,20 +140,10 @@ def Lets_Play():
             print("\n")
 
             # To check losing condition
-            """if (You_Lose() == False):
-                KeepPlaying()
-                break"""
-
-            # To check losing condition
             if(((left_Can==3)and (left_Miss == 1))or((left_Can==3)and(left_Miss==2))or((left_Can==2)and(left_Miss==1))or((right_Can==3)and (right_Miss == 1))or((right_Can==3)and(right_Miss==2))or((right_Can==2)and(right_Miss==1))):
                 print("Cannibals eat missionaries:\nYou lost the game")
                 KeepPlaying()
                 break
-
-            # To stop the game in between
-            """stop_game = input("Press q to exit the game or press enter to continue : ")
-            if(stop_game == 'q'):
-                break"""
 
     except EOFError:
         print("\nInvalid input please retry !!")
