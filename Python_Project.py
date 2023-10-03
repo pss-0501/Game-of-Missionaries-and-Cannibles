@@ -2,70 +2,81 @@
 
 # To move left to right
 def Left_TO_Right(left_Miss,left_Can):
-    while True:         #This loop is for Input. Infinite loop till proper input is received 
-        print("Left side -> right side river travel")
-        #User Input
-        user_Miss = input("Press q to exit the game or Enter number of Missionaries travel (0,1,2) => ")
+    try:
+        while True:         #This loop is for Input. Infinite loop till proper input is received 
+            print("Left side -> right side river travel")
+            #User Input
+            user_Miss = input("Press q to exit the game or Enter number of Missionaries travel (0,1,2) => ")
 
-        if(user_Miss == 'q'):
-            print("Thanks for Playing! GoodBye!! ")
-            exit()
+            if(user_Miss == 'q'):
+                print("Thanks for Playing! GoodBye!! ")
+                exit()
+            user_Miss = int(user_Miss)
 
-        user_Can = input("Press q to exit the game or Enter number of Cannibals travel (0,1,2) => ")
+            user_Can = input("Press q to exit the game or Enter number of Cannibals travel (0,1,2) => ")
 
-        if(user_Can == 'q'):
-            print("Thanks for Playing! GoodBye!! ")
-            exit()
-        
-        user_Miss = int(user_Miss)
-        user_Can = int(user_Can)    #Type Casting
-        
-        if((user_Miss==0)and(user_Can==0)):
-            print("Travel not possible if boat is empty!")
-            print("Please Re-enter the values : ")
-            #User Input Total <= 2; missionary number should be >0 for tavel; Cannibal number should be >0 for travel
-        elif(((user_Miss+user_Can) <= 2)and((left_Miss-user_Miss)>=0)and((left_Can-user_Can)>=0)):
-            return (user_Miss,user_Can)
-            #break           # Break second loop if user input is correct and check win loss conditions
-        else:
-            print("Wrong or Invalid input! Read the rules and please re-enter : ")        
+            if(user_Can == 'q'):
+                print("Thanks for Playing! GoodBye!! ")
+                exit()           
+            user_Can = int(user_Can)    #Type Casting
+            
+            if((user_Miss==0)and(user_Can==0)):
+                print("Travel not possible if boat is empty!")
+                print("Please Re-enter the values : ")
+                #User Input Total <= 2; missionary number should be >0 for tavel; Cannibal number should be >0 for travel
+            elif(((user_Miss+user_Can) <= 2)and((left_Miss-user_Miss)>=0)and((left_Can-user_Can)>=0)):
+                return (user_Miss,user_Can)
+                #break           # Break second loop if user input is correct and check win loss conditions
+            else:
+                print("Wrong or Invalid input! Read the rules and please re-enter : ")
+    except ValueError:
+        print('Error Occurred. Please enter values as per rules and try again later! ')
+    except Exception:
+        print('Error! Try again later! ')
 
 
 # To move right to left
 def Right_To_Left(right_Miss,right_Can):
-    while True:
-        print("Right side -> Left side river travel")
-        user_Miss = input("Enter number of Missionaries travel (0,1,2) => ")
+    try:
+        while True:
+            print("Right side -> Left side river travel")
+            user_Miss = input("Press q to exit the game or Enter number of Missionaries travel (0,1,2) => ")
 
-        if(user_Miss == 'q'):
-            print("Thanks for Playing! GoodBye!! ")
-            exit()
+            if(user_Miss == 'q'):
+                print("Thanks for Playing! GoodBye!! ")
+                exit()
 
-        user_Can = input("Press q to exit the game or Enter number of Cannibals travel (0,1,2) => ")
-        
-        if(user_Can == 'q'):
-            print("Thanks for Playing! GoodBye!! ")
-            exit()
+            user_Miss = int(user_Miss)
 
-        user_Miss = int(user_Miss)
-        user_Can = int(user_Can)    #Type Casting
+            user_Can = input("Press q to exit the game or Enter number of Cannibals travel (0,1,2) => ")
+            
+            if(user_Can == 'q'):
+                print("Thanks for Playing! GoodBye!! ")
+                exit()
 
-        if((user_Miss==0)and(user_Can==0)):
-            print("Travel not possible if boat is empty!")
-            print("Please Re-enter the values : ")
-            #User Input Total <= 2; missionary number should be >0 for tavel; Cannibal number should be >0 for travel
-        elif(((user_Miss+user_Can)<=2)and((right_Miss-user_Miss)>=0)and((right_Can-user_Can)>=0)):
-            return (user_Miss,user_Can)
-            #break  #continue with the program; end function
-        else:
-            print("Wrong or Invalid input! Read the rules and please re-enter : ")
+            user_Can = int(user_Can)    #Type Casting
+
+            if((user_Miss==0)and(user_Can==0)):
+                print("Travel not possible if boat is empty!")
+                print("Please Re-enter the values : ")
+                #User Input Total <= 2; missionary number should be >0 for tavel; Cannibal number should be >0 for travel
+            elif(((user_Miss+user_Can)<=2)and((right_Miss-user_Miss)>=0)and((right_Can-user_Can)>=0)):
+                return (user_Miss,user_Can)
+                #break  #continue with the program; end function
+            else:
+                print("Wrong or Invalid input! Read the rules and please re-enter : ")
+    except ValueError:
+        print('Error Occurred. Please enter values as per rules and try again later! ')
+    except Exception:
+        print('Error! Try again later! ')
+
 
 
 def Lets_Play():
     # Game Starts
     # Rules
     print("\n")
-    print("Game Start\nNow the task is to move all of them to right side of the river")
+    print("Game Start!\nNow the task is to move all of them to right side of the river")
     print("Rules:\n1. The boat can carry at most two people\n2. If cannibals number is greater than missionaries then the cannibals would eat the missionaries\n3. The boat cannot cross the river by itself with no people on board \n4. The boat must have at least one person on board.")
 
     left_Miss = 3		 #Left side Missionaries number
@@ -114,6 +125,7 @@ def Lets_Play():
             if((right_Miss+right_Can) == 6):
                 print("You won the game : \n\tCongrats")
                 print("Total attempt", attempts)
+                KeepPlaying()
                 #print(k)
                 break
 
@@ -151,14 +163,19 @@ def Lets_Play():
         print("\nValue Error has occurred! Please retry !!")
     except Exception:
         print("Error Occurred! Please try again !!")
+        KeepPlaying()
 
 
 def KeepPlaying():
-    Play_Again = input("Do you want to play again? Press y or Press enter to quit: ")
-    if(Play_Again == 'y'):
-        Lets_Play()
-    else:
-        exit()
+    while True:
+        Play_Again = input("Do you want to play again? Press y to play or Press enter to quit: ")
+        if(Play_Again == 'y'):
+            Lets_Play()
+        elif(Play_Again == ''):
+            print("Thanks for Playing! GoodBye!! ")
+            exit()
+        else:
+            print("Invalid Input! Please try again. ")
 
-print("Lets Play!! ")
+print("Lets Play Cross the River !! ")
 Lets_Play()
